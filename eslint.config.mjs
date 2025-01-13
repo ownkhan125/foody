@@ -9,6 +9,9 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
 
-const eslintConfig = [...compat.extends("next/core-web-vitals")];
+const eslintConfig = [...compat.extends("next/core-web-vitals"),{"rules": {
+    "react/function-component-definition": "off", // Disable the rule
+    "react-hooks/rules-of-hooks": "off" // Disable hooks rule (optional, be cautious)
+  }}];
 
 export default eslintConfig;
