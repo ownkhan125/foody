@@ -56,7 +56,7 @@ const AddProduct = () => {
     return (
         <div className="absolute top-0 right-0 left-0 bottom-0 w-full h-full bg-blue-200 min-h-screen flex items-center justify-center">
             <div className="bg-white p-10 rounded-lg shadow-lg w-full sm:w-3/4 lg:w-1/2 absolute top-1/2 transform -translate-y-1/2">
-                <h2 className="text-center text-blue-400 font-bold text-2xl uppercase mb-10">Fill out our form</h2>
+                <h2 className="text-center text-blue-400 font-bold text-2xl uppercase mb-10">Fill out form</h2>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     {/* Food Name Field */}
                     <div className="mb-5">
