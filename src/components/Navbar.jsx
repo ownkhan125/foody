@@ -1,12 +1,12 @@
 'use client'
 
-import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 
 const Navbar = () => {
-    const router = useRouter();
+    const pathname = usePathname();
     const { data: session } = useSession();
 
 
@@ -21,32 +21,34 @@ const Navbar = () => {
             <nav className="bg-white fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600 shadow-md">
                 <ul className="max-w-[100%] flex justify-between items-center mx-auto py-4 px-4 md:px-8">
                     {/* Logo */}
-                    <Link href="/" className="logo">
-                        <h3 className="font-bold text-2xl">LOGO</h3>
-                    </Link>
+                    <div>
+                        <Link href="/" className="logo">
+                            <button className='btn my-2' onClick={() => signOut()}>Sign out</button>
+                        </Link>
 
-                    {/* Mobile Menu Toggle */}
-                    <input type="checkbox" id="check" className="hidden peer" />
-                    <label
-                        htmlFor="check"
-                        className="open-menu cursor-pointer md:hidden text-xl text-gray-700"
-                    >
-                        &#9776;
-                    </label>
+                        {/* Mobile Menu Toggle */}
+                        <input type="checkbox" id="check" className="hidden peer" />
+                        <label
+                            htmlFor="check"
+                            className="open-menu cursor-pointer md:hidden text-xl text-gray-700"
+                        >
+                            &#9776;
+                        </label>
+                    </div>
 
                     {/* Navigation Links */}
                     <div className="flex items-center gap-x-2">
                         <span
                             className="menu absolute left-0 top-16 w-full bg-white flex flex-col items-center gap-4 py-4 md:flex-row md:relative md:w-auto md:gap-8 md:py-0 md:top-0 md:bg-transparent 
-            peer-checked:flex peer-checked:top-16"
+                                peer-checked:flex peer-checked:top-16"
                         >
                             {navLinks.map((link) => (
                                 <li key={link.href} className="list-none">
                                     <Link
                                         href={link.href}
-                                        className={`${router.pathname === link.href
-                                            ? "text-blue-500 font-bold border-b-2 border-blue-500"
-                                            : "text-gray-800 hover:text-blue-500"
+                                        className={`${pathname === link.href  // Handle home or root path mismatch
+                                            ? "text-blue-500 font-bold border-b-2 border-blue-500 p-4"
+                                            : "text-gray-800 hover:text-blue-500 p-4"
                                             }`}
                                     >
                                         {link.name}

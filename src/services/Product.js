@@ -1,5 +1,9 @@
+const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}`;
+
 export const fetchProduct = async ({ queryKey }) => {
     try {
+
+
         const [, filter] = queryKey
         const { search, products } = filter
         // Convert filters to query string
@@ -7,7 +11,7 @@ export const fetchProduct = async ({ queryKey }) => {
             search: search,
             products: products,
         })
-        const response = await fetch(`http://localhost:3000/api/product?${queryParams}`, {
+        const response = await fetch(`${apiUrl}/api/product?${queryParams}`, {
             method: 'GET'
         });
         const data = await response.json();
@@ -20,7 +24,7 @@ export const fetchProduct = async ({ queryKey }) => {
 
 export const sendProduct = async (data) => {
     try {
-        const res = await fetch('http://localhost:3000/api/product', {
+        const res = await fetch(`${apiUrl}/api/product`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -37,7 +41,7 @@ export const sendProduct = async (data) => {
 export const deleteItem = async (id) => {
     try {
         console.log('chec id', id);
-        const res = await fetch('http://localhost:3000/api/product', {
+        const res = await fetch(`${apiUrl}/api/product`, {
             method: 'DELETE',
             body: JSON.stringify({ id }),
         });

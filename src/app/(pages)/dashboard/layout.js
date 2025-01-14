@@ -4,11 +4,13 @@ import React from 'react'
 const layout = ({ children }) => {
     return (
         <>
+
             <Navbar />
 
             <div className='pt-10 my-10'>
                 {children}
             </div>
+
         </>
     )
 }

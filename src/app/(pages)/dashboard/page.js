@@ -69,11 +69,9 @@ const page = () => {
 
         <>
 
-            
+
             <div className='container-1'>
                 <h1>Dashboard{session?.user?.name}</h1>
-                <button className='btn' onClick={Toggle}>Add Product</button>
-                <button className='btn my-2' onClick={() => signOut()}>Sign out</button>
                 <div className={`absolute top-0 left-0 right-0 bottom-0 z-50 ${show ? '' : 'hidden'}`}>
                     {show ? <AddProduct /> : ''}
                     {show ? <IoCloseSharp className='absolute top-3 right-3 text-3xl cursor-pointer' onClick={Toggle} /> : ''}
@@ -114,7 +112,7 @@ const page = () => {
                     </select>
                 </div>
 
-                <div className='grid grid-flow-row grid-cols-3 gap-5 my-3'>
+                <div className='grid  grid-flow-row grid-cols-3 gap-5 my-3'>
 
                     {
                         data?.map((item, index) => (
@@ -149,57 +147,11 @@ const page = () => {
                                                     ${item?.price || "0.00"}
                                                 </span>
                                                 <span className="text-sm text-gray-500">
-                                                    {item?.time?.hours || 0}h {item?.time?.minutes || 0}m
+                                                    Making Time : {item?.time?.hours || 0}h {item?.time?.minutes || 0}m
                                                 </span>
                                             </div>
                                         </div>
 
-                                        {/* Action Buttons */}
-                                        <div className="flex justify-between px-5 py-3 bg-gray-50 border-t">
-                                            {/* Delete Button */}
-                                            <button
-                                                onClick={() => toggleModal(item._id)}
-                                                className="text-red-500 hover:text-red-600 flex items-center gap-2"
-                                            >
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    fill="none"
-                                                    viewBox="0 0 24 24"
-                                                    strokeWidth="1.5"
-                                                    stroke="currentColor"
-                                                    className="w-6 h-6"
-                                                >
-                                                    <path
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round"
-                                                        d="M6 18L18 6M6 6l12 12"
-                                                    />
-                                                </svg>
-                                                <span>Delete</span>
-                                            </button>
-
-                                            {/* Update Button */}
-                                            <button
-                                                onClick={() => updateItem(item._id)}
-                                                className="text-blue-500 hover:text-blue-600 flex items-center gap-2"
-                                            >
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    fill="none"
-                                                    viewBox="0 0 24 24"
-                                                    strokeWidth="1.5"
-                                                    stroke="currentColor"
-                                                    className="w-6 h-6"
-                                                >
-                                                    <path
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round"
-                                                        d="M11 17l-4-4m0 0l4-4m-4 4h16"
-                                                    />
-                                                </svg>
-                                                <span>Update</span>
-                                            </button>
-                                        </div>
 
                                     </div>
                                 </Link>
