@@ -68,6 +68,8 @@ const page = () => {
     return (
 
         <>
+
+            
             <div className='container-1'>
                 <h1>Dashboard{session?.user?.name}</h1>
                 <button className='btn' onClick={Toggle}>Add Product</button>
@@ -118,39 +120,45 @@ const page = () => {
                         data?.map((item, index) => (
                             <div
                                 key={index}
-                                className="w-full bg-white shadow-md overflow-hidden rounded-xl duration-500 hover:scale-105 hover:shadow-xl"
-                            >
-                                <Link href={"#"} className="flex h-full flex-col justify-between gap-3">
-
-                                    <div className="img-wrapper flex justify-center items-center bg-gray-100 w-full h-40 overflow-hidden">
+                                className="w-full bg-white shadow-lg overflow-hidden rounded-lg duration-300 transform hover:scale-105 hover:shadow-2xl">
+                                <Link href={"#"} className="flex flex-col h-full justify-between">
+                                    {/* Image Section */}
+                                    <div className="img-wrapper flex justify-center items-center bg-gray-100 w-full h-48 overflow-hidden">
                                         <Image
-                                            alt=""
-                                            src={item?.image || "/placeholder.png"} // Provide a fallback image if `item.image` is not available
-                                            width={200}
-                                            height={200}
-                                            sizes="100%"
+                                            alt={item?.name || "Product Image"}
+                                            src={item?.image || "/placeholder.png"}
+                                            fill
                                             style={{
-                                                objectFit: "cover", // Ensures the image covers the container without distortion
+                                                objectFit: "cover",
                                             }}
                                         />
                                     </div>
+                                    <div>
+                                        {/* Content Section */}
+                                        <div className="w-full px-5 py-4">
+                                            {/* Title and Brand */}
+                                            <div className="mb-3">
+                                                <h3 className="text-lg font-bold text-gray-800 mt-1 truncate">
+                                                    {item?.name || "Product Name"}
+                                                </h3>
+                                            </div>
 
-
-                                    <div className="w-full px-4 py-3">
-                                        <div>
-                                            <span className="text-gray-400 mr-3 uppercase text-xs">Brand</span>
-                                            <p className="text-lg font-bold text-black truncate block capitalize">
-                                                {item?.name}
-                                            </p>
-                                            <div className="flex items-center justify-between mt-3">
-                                                <p className="text-lg font-semibold text-black cursor-auto">
-                                                    {item?.price}
-                                                </p>
+                                            {/* Price */}
+                                            <div className="flex items-center justify-between mt-2">
+                                                <span className="text-xl font-semibold text-green-600">
+                                                    ${item?.price || "0.00"}
+                                                </span>
+                                                <span className="text-sm text-gray-500">
+                                                    {item?.time?.hours || 0}h {item?.time?.minutes || 0}m
+                                                </span>
                                             </div>
                                         </div>
-                                        <div className="flex justify-between px-4 py-3 bg-gray-50 border-t">
+
+                                        {/* Action Buttons */}
+                                        <div className="flex justify-between px-5 py-3 bg-gray-50 border-t">
+                                            {/* Delete Button */}
                                             <button
-                                                onClick={() => toggleModal(item._id)} // Replace with your delete logic
+                                                onClick={() => toggleModal(item._id)}
                                                 className="text-red-500 hover:text-red-600 flex items-center gap-2"
                                             >
                                                 <svg
@@ -170,8 +178,9 @@ const page = () => {
                                                 <span>Delete</span>
                                             </button>
 
+                                            {/* Update Button */}
                                             <button
-                                                // onClick={() => } // Replace with your update logic
+                                                onClick={() => updateItem(item._id)}
                                                 className="text-blue-500 hover:text-blue-600 flex items-center gap-2"
                                             >
                                                 <svg
@@ -191,16 +200,13 @@ const page = () => {
                                                 <span>Update</span>
                                             </button>
                                         </div>
+
                                     </div>
-
-
                                 </Link>
-
-
-
                             </div>
                         ))
                     }
+
                 </div>
 
                 <div className={`modal-center ${isModalOpen == null ? 'hidden' : ''}`}>
