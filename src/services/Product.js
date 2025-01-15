@@ -2,8 +2,6 @@ const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}`;
 
 export const fetchProduct = async ({ queryKey }) => {
     try {
-
-
         const [, filter] = queryKey
         const { search, products } = filter
         // Convert filters to query string

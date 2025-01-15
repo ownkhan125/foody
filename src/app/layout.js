@@ -1,9 +1,11 @@
+import React from 'react';
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/style/globals.css"
 import NextAuthProvider from "@/providers/nextAuthProvider";
 import ReactQueryProvider from "@/providers/reactQueryProvider";
+import { Provider } from "@/components/ui/provider"
 
-
+// Fonts setup
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -21,11 +23,13 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <NextAuthProvider>
           <ReactQueryProvider>
-            {children}
+            <Provider>
+              {children}
+            </Provider>
           </ReactQueryProvider>
         </NextAuthProvider>
       </body>

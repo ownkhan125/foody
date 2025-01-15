@@ -4,13 +4,13 @@ import React from 'react'
 const layout = ({ children }) => {
     return (
         <>
+            
+                <Navbar />
 
-            <Navbar />
-
-            <div className='pt-10 my-10'>
-                {children}
-            </div>
-
+                <div className='pt-10 my-10'>
+                    {children}
+                </div>
+            {data.folowers && <div>{data.folowers}</div>}
         </>
     )
 }

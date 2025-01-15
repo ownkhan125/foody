@@ -43,7 +43,7 @@ const Navbar = () => {
                                 peer-checked:flex peer-checked:top-16"
                         >
                             {navLinks.map((link) => (
-                                <li key={link.href} className="list-none">
+                                <li key={link.href} className="list-none ">
                                     <Link
                                         href={link.href}
                                         className={`${pathname === link.href  // Handle home or root path mismatch
