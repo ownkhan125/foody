@@ -8,6 +8,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { IoCloseSharp } from "react-icons/io5";
+import { Button, Card, Image as CustomImg, Text } from "@chakra-ui/react";
 
 
 const page = () => {
@@ -103,97 +104,121 @@ const page = () => {
 
 
 
+
+
                 <div className='grid grid-flow-row grid-cols-3 gap-5 mt-8'>
 
                     {
-                        data?.map((item, index) => (
-                            <div
-                                key={index}
-                                className="w-full bg-white shadow-lg overflow-hidden rounded-lg duration-300 transform hover:scale-105 hover:shadow-2xl">
-                                <Link href={"#"} className="flex flex-col h-full justify-between">
-                                    {/* Image Section */}
-                                    <div className="img-wrapper flex justify-center items-center bg-gray-100 w-full h-48 overflow-hidden">
-                                        <Image
-                                            alt={item?.name}
-                                            src={item?.image || 'https://www.foodandwine.com/thmb/DI29Houjc_ccAtFKly0BbVsusHc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/crispy-comte-cheesburgers-FT-RECIPE0921-6166c6552b7148e8a8561f7765ddf20b.jpg'}
-                                            fill
-                                            style={{
-                                                objectFit: "cover",
-                                            }}
-                                        />
-                                    </div>
-                                    <div>
-                                        {/* Content Section */}
-                                        <div className="w-full px-5 py-4">
-                                            {/* Title and Brand */}
-                                            <div className="mb-3">
-                                                <h3 className="text-lg font-bold text-gray-800 mt-1 truncate">
-                                                    {item?.name || "Product Name"}
-                                                </h3>
-                                            </div>
+                        // data?.map((item, index) => (
+                        //     <div
+                        //         key={index}
+                        //         className="w-full bg-white shadow-lg overflow-hidden rounded-lg duration-300 transform hover:scale-105 hover:shadow-2xl">
+                        //         <Link href={"#"} className="flex flex-col h-full justify-between">
+                        //             {/* Image Section */}
+                        //             <div className="img-wrapper flex justify-center items-center bg-gray-100 w-full h-48 overflow-hidden">
+                        //                 <Image
+                        //                     alt={item?.name}
+                        //                     src={item?.image || 'https://www.foodandwine.com/thmb/DI29Houjc_ccAtFKly0BbVsusHc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/crispy-comte-cheesburgers-FT-RECIPE0921-6166c6552b7148e8a8561f7765ddf20b.jpg'}
+                        //                     fill
+                        //                     style={{
+                        //                         objectFit: "cover",
+                        //                     }}
+                        //                 />
+                        //             </div>
+                        //             <div>
+                        //                 {/* Content Section */}
+                        //                 <div className="w-full px-5 py-4">
+                        //                     {/* Title and Brand */}
+                        //                     <div className="mb-3">
+                        //                         <h3 className="text-lg font-bold text-gray-800 mt-1 truncate">
+                        //                             {item?.name || "Product Name"}
+                        //                         </h3>
+                        //                     </div>
 
-                                            {/* Price */}
-                                            <div className="flex items-center justify-between mt-2">
-                                                <span className="text-xl font-semibold text-green-600">
-                                                    ${item?.price || "0.00"}
-                                                </span>
-                                                <span className="text-sm text-gray-500">
-                                                    {item?.time?.hours || 0}h {item?.time?.minutes || 0}m
-                                                </span>
-                                            </div>
-                                        </div>
+                        //                     {/* Price */}
+                        //                     <div className="flex items-center justify-between mt-2">
+                        //                         <span className="text-xl font-semibold text-green-600">
+                        //                             ${item?.price || "0.00"}
+                        //                         </span>
+                        //                         <span className="text-sm text-gray-500">
+                        //                             {item?.time?.hours || 0}h {item?.time?.minutes || 0}m
+                        //                         </span>
+                        //                     </div>
+                        //                 </div>
 
-                                        {/* Action Buttons */}
-                                        <div className="flex justify-between px-5 py-3 bg-gray-50 border-t">
-                                            {/* Delete Button */}
-                                            <button
-                                                onClick={() => toggleModal(item._id)}
-                                                className="text-red-500 hover:text-red-600 flex items-center gap-2"
-                                            >
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    fill="none"
-                                                    viewBox="0 0 24 24"
-                                                    strokeWidth="1.5"
-                                                    stroke="currentColor"
-                                                    className="w-6 h-6"
-                                                >
-                                                    <path
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round"
-                                                        d="M6 18L18 6M6 6l12 12"
-                                                    />
-                                                </svg>
-                                                <span>Delete</span>
-                                            </button>
+                        //                 {/* Action Buttons */}
+                        //                 <div className="flex justify-between px-5 py-3 bg-gray-50 border-t">
+                        //                     {/* Delete Button */}
+                        //                     <button
+                        //                         onClick={() => toggleModal(item._id)}
+                        //                         className="text-red-500 hover:text-red-600 flex items-center gap-2"
+                        //                     >
+                        //                         <svg
+                        //                             xmlns="http://www.w3.org/2000/svg"
+                        //                             fill="none"
+                        //                             viewBox="0 0 24 24"
+                        //                             strokeWidth="1.5"
+                        //                             stroke="currentColor"
+                        //                             className="w-6 h-6"
+                        //                         >
+                        //                             <path
+                        //                                 strokeLinecap="round"
+                        //                                 strokeLinejoin="round"
+                        //                                 d="M6 18L18 6M6 6l12 12"
+                        //                             />
+                        //                         </svg>
+                        //                         <span>Delete</span>
+                        //                     </button>
 
-                                            {/* Update Button */}
-                                            <button
-                                                onClick={() => updateItem(item._id)}
-                                                className="text-blue-500 hover:text-blue-600 flex items-center gap-2"
-                                            >
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    fill="none"
-                                                    viewBox="0 0 24 24"
-                                                    strokeWidth="1.5"
-                                                    stroke="currentColor"
-                                                    className="w-6 h-6"
-                                                >
-                                                    <path
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round"
-                                                        d="M11 17l-4-4m0 0l4-4m-4 4h16"
-                                                    />
-                                                </svg>
-                                                <span>Update</span>
-                                            </button>
-                                        </div>
+                        //                     {/* Update Button */}
+                        //                     <button
+                        //                         onClick={() => updateItem(item._id)}
+                        //                         className="text-blue-500 hover:text-blue-600 flex items-center gap-2"
+                        //                     >
+                        //                         <svg
+                        //                             xmlns="http://www.w3.org/2000/svg"
+                        //                             fill="none"
+                        //                             viewBox="0 0 24 24"
+                        //                             strokeWidth="1.5"
+                        //                             stroke="currentColor"
+                        //                             className="w-6 h-6"
+                        //                         >
+                        //                             <path
+                        //                                 strokeLinecap="round"
+                        //                                 strokeLinejoin="round"
+                        //                                 d="M11 17l-4-4m0 0l4-4m-4 4h16"
+                        //                             />
+                        //                         </svg>
+                        //                         <span>Update</span>
+                        //                     </button>
+                        //                 </div>
 
-                                    </div>
-                                </Link>
-                            </div>
-                        ))
+                        //             </div>
+                        //         </Link>
+                        //     </div>
+                        // ))
+                        // <Card.Root key={index} maxW="sm" overflow="hidden" variant={"elevated"}>
+                        //     <Image
+                        //         src="https://www.foodandwine.com/thmb/DI29Houjc_ccAtFKly0BbVsusHc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/crispy-comte-cheesburgers-FT-RECIPE0921-6166c6552b7148e8a8561f7765ddf20b.jpg"
+                        //         alt="Green double couch with wooden legs"
+                        //         width={200}
+                        //         height={200}
+                        //     />
+                        //     <Card.Body gap="2">
+                        //         <Card.Title>Living room Sofa</Card.Title>
+                        //         <Card.Description>
+                        //             This sofa is perfect for modern tropical spaces, baroque inspired
+                        //             spaces.
+                        //         </Card.Description>
+                        //         <Text textStyle="2xl" fontWeight="medium" letterSpacing="tight" mt="2">
+                        //             $450
+                        //         </Text>
+                        //     </Card.Body>
+                        //     <Card.Footer gap="2">
+                        //         <Button variant="solid">Buy now</Button>
+                        //         <Button variant="ghost">Add to cart</Button>
+                        //     </Card.Footer>
+                        // </Card.Root>
                     }
 
                 </div>

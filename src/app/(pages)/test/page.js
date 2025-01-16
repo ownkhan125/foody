@@ -1,29 +1,34 @@
-import { Card } from "@chakra-ui/react"
-import { Avatar } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
+"use client"
+
+import { Button, Card, Image, Text } from "@chakra-ui/react";
+
+
 
 const page = () => {
   return (
-    <Card.Root width="320px">
+    <Card.Root maxW="sm" overflow="hidden" variant={"subtle"}>
+      <Image
+        src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+        alt="Green double couch with wooden legs"
+      />
       <Card.Body gap="2">
-        <Avatar
-          src="https://picsum.photos/200/300"
-          name="Nue Camp"
-          size="lg"
-          shape="rounded"
-        />
-        <Card.Title mt="2">Nue Camp</Card.Title>
+        <Card.Title>Living room Sofa</Card.Title>
         <Card.Description>
-          This is the card body. Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Curabitur nec odio vel dui euismod fermentum.
-          Curabitur nec odio vel dui euismod fermentum.
+          This sofa is perfect for modern tropical spaces, baroque inspired
+          spaces.
         </Card.Description>
+        <Text textStyle="2xl" fontWeight="medium" letterSpacing="tight" mt="2">
+          $450
+        </Text>
       </Card.Body>
-      <Card.Footer justifyContent="flex-end">
-        <Button variant="outline">View</Button>
-        <Button>Join</Button>
+      <Card.Footer gap="2">
+        <Button variant="solid">Buy now</Button>
+        <Button variant="ghost">Add to cart</Button>
       </Card.Footer>
     </Card.Root>
+
+
+
   )
 }
 
