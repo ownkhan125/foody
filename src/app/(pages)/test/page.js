@@ -5,7 +5,7 @@ const page = () => {
     <>
 
 
-      <Button variant={'subtle'}>click me</Button>
+      <Button className="btn" variant={'subtle'}>click me</Button>
       <Button variant={'surface'}>click me</Button>
       <Button variant={'ghost'}>click me</Button>
       <Button variant={'outline'}>click me</Button>

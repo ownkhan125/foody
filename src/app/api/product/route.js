@@ -18,7 +18,6 @@ export const GET = async (req) => {
             return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
         }
 
-
         const { searchParams } = new URL(req?.url);
         const searchName = searchParams?.get("search")?.toLowerCase()?.trim();
         const searchProducts = searchParams?.get("products")?.toLowerCase()?.trim();
@@ -41,6 +40,7 @@ export const GET = async (req) => {
             } else {
                 // If search term exists, filter products based on the search term
                 const filteredProducts = await Product.find({
+                    author: session?.user?.userId,
                     name: { $regex: searchName, $options: 'i' }, // Case-insensitive search
                 });
 
@@ -53,9 +53,6 @@ export const GET = async (req) => {
             }
         }
 
-
-
-
     } catch (error) {
         console.log('product Get::', error?.message);
         return NextResponse.json(error.message, { status: 500 })
@@ -67,7 +64,7 @@ export const POST = async (req) => {
     try {
         await connectDB();
         const { data } = await req.json();
-        
+
         if (!data) {
             return NextResponse.json('user unAuthorized', { status: 401 })
         };

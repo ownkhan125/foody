@@ -1,4 +1,4 @@
-
+import React from 'react';
 // import React from 'react';
 import { Geist, Geist_Mono } from "next/font/google";
 
@@ -6,8 +6,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 
 
 import { Provider } from '@/components/ui/provider';
-import NextAuthProvider from "@/providers/nextAuthProvider";
+
 import ReactQueryProvider from "@/providers/reactQueryProvider";
+import NextAuthProvider from '@/providers/nextAuthProvider';
 
 // Last - Global CSS
 import "@/style/globals.css";
@@ -45,5 +46,5 @@ export default function RootLayout({ children }) {
         </NextAuthProvider>
       </body>
     </html>
-  );
+  ); s
 }
