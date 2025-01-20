@@ -1,9 +1,20 @@
-import React from 'react';
+
+// import React from 'react';
 import { Geist, Geist_Mono } from "next/font/google";
-import "@/style/globals.css"
+
+// Second - Provider imports
+
+
+import { Provider } from '@/components/ui/provider';
 import NextAuthProvider from "@/providers/nextAuthProvider";
 import ReactQueryProvider from "@/providers/reactQueryProvider";
-import { Provider } from "@/components/ui/provider"
+
+// Last - Global CSS
+import "@/style/globals.css";
+
+
+
+
 
 // Fonts setup
 const geistSans = Geist({
@@ -23,7 +34,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <NextAuthProvider>
           <ReactQueryProvider>
